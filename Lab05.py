@@ -31,11 +31,16 @@ def binary_to_decimal(b:str):
     return 2 ** place * int(b[0]) + binary_to_decimal(b.removeprefix(b[0]))
 
 def ip_to_binary(ip:str):
-    ip = ip.split(".")
-    new = []
-    for i in ip:
-        new.append(str((decimal_to_binary(int(i)))))
-    print(".".join(new))
+    if is_valid_ip(ip):
+        ip = ip.split(".")
+        new = []
+        for i in ip:
+            new.append(str(decimal_to_binary(int(i))))
+        ip = ".".join(new)
+        return ip
+    else:
+        return str("IP Invalid")
+
 
 
 
@@ -48,4 +53,4 @@ def ip_to_binary(ip:str):
 #print(is_valid_ip(ip)) #Use this to test IP recognization.
 #print(decimal_to_binary(int(ip))) #Put an INTEGER in here to convert to binary.
 #print(binary_to_decimal(ip)) #put in a BASE 2 formatted number to have it converted to decimal.
-#ip_to_binary("12.234.12.1") #EXTRA CREDIT//Uncomment this to see ip_to_binary
+#print(ip_to_binary("12.23.23.1"))#EXTRA CREDIT//Uncomment this to see ip_to_binary
